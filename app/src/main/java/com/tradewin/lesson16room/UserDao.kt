@@ -1,8 +1,7 @@
 package com.tradewin.lesson16room
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.lifecycle.LiveData
+import androidx.room.*
 
 @Dao
 interface UserDao {
@@ -12,4 +11,16 @@ interface UserDao {
 
     @Query("SELECT * FROM UserInfoModel")
     fun getAllUsers(): List<UserInfoModel>
+
+    @Query("SELECT * FROM UserInfoModel")
+    fun getAllUsersObserve(): LiveData<List<UserInfoModel>>
+
+    @Delete
+    fun deleteUser(user: UserInfoModel)
+
+    @Query("SELECT * FROM UserInfoModel WHERE :userID = id LIMIT 1")
+    fun getUser(userID: Int): UserInfoModel
+
+    @Update
+    fun updateUser(user: UserInfoModel?)
 }

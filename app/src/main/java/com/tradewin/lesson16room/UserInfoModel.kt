@@ -7,6 +7,11 @@ import androidx.room.PrimaryKey
 data class UserInfoModel(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val name: String,
-    val secondName: String
+    var name: String,
+    var secondName: String
+)
+
+
+data class TestClass(
+    val sdsdsd: String
 )
